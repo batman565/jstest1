@@ -1,12 +1,19 @@
-name: ci pipeline
+name: CI Pipeline
+
 on: [push]
 
 jobs:
-    test:
+  test:
     runs-on: ubuntu-latest
-     steps:
-       - uses: actions/checkout
-         run: npm install
-         run: npm run test
-         run: npm run lint
-    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Run linter
+        run: npm run lint
